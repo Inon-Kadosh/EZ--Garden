@@ -71,7 +71,7 @@ EZ-Garden/
 │   ├── register.png
 │
 └── __pycache__/
-
+```
 ⸻
 
 🏃 Running the Project
