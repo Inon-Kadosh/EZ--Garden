@@ -29,14 +29,23 @@ EZ‑Garden is a complete management platform for gardens, farms, municipalities
 ⸻
 
 🚀 Features
+
 	•	🔐 Login system (employees + private users)
+	
 	•	🌱 Plant database and plant detail pages
+	
 	•	📊 Efficiency dashboard (graphs, charts, metrics)
+	
 	•	🧪 Water-saving recommendations
+	
 	•	🗺️ Map + areas overview
+	
 	•	🛠️ Issues reporting & maintenance module
+	
 	•	👨‍🏫 Educational content for kids
+	
 	•	🗃️ Firestore database integration
+	
 	•	📂 File uploads + images
 
 ⸻
