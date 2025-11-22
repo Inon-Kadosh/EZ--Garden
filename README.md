@@ -107,6 +107,7 @@ EZ-Garden/
 **Charts:** Chart.js  
 **Auth:** Firestore-based user system  
 **Hosting (optional):** Firebase Hosting / Render / Railway
+
 ⸻
 
 🏃 Running the Project
