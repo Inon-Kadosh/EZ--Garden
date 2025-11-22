@@ -29,23 +29,22 @@ EZ‑Garden is a complete management platform for gardens, farms, municipalities
 
 🗺️ Interactive City Map
 
-![](/mnt/data/צילום מסך 2025-11-22 ב-23.34.00.jpeg)
-
-🧭 Area View + Plant Navigation
-
-![](/mnt/data/צילום מסך 2025-11-22 ב-23.34.20.png)
+photos/map.png
 
 🏙️ System Landing Page
 
-![](/mnt/data/צילום מסך 2025-11-22 ב-23.28.39.png)
+photos/home1.png
+
+photos/home2.png
+
 
 🔐 Registration Selection
 
-![](/mnt/data/צילום מסך 2025-11-22 ב-23.29.05.png)
+photos/register.png
 
 📊 Efficiency Tracking Dashboard
 
-![](/mnt/data/צילום מסך 2025-11-22 ב-23.28.54.jpeg)
+photos/dash.png
 
 ⸻
 
