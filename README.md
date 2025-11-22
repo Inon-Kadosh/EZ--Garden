@@ -98,6 +98,16 @@ EZ-Garden/
 └── __pycache__/
 ```
 ⸻
+## 🛠️ Tech Stack
+
+**Backend:** Flask (Python)  
+**Database:** Firebase Firestore  
+**Frontend:** HTML, CSS, JS, Bootstrap  
+**Maps:** Leaflet.js  
+**Charts:** Chart.js  
+**Auth:** Firestore-based user system  
+**Hosting (optional):** Firebase Hosting / Render / Railway
+⸻
 
 🏃 Running the Project
 
