@@ -46,24 +46,31 @@ EZ‑Garden is a complete management platform for gardens, farms, municipalities
 ![Dashboard](photos/dash.png)
 ⸻
 
-🏗️ Project Structure
+## 🏗️ Project Structure
 
+```plaintext
 EZ-Garden/
-│── app.py
-│── requirements.txt
-│── firebase-key.json   (ignored in git)
-│── .gitignore
+├── app.py
+├── requirements.txt
+├── firebase-key.json        # ignored in git
+├── .gitignore
 │
 ├── templates/
-│     ├── *.html
+│   ├── *.html
 │
 ├── static/
-│     ├── css/
-│     ├── js/
-│     ├── images/
+│   ├── css/
+│   ├── js/
+│   ├── images/
+│
+├── photos/                  # screenshots used in README
+│   ├── home1.png
+│   ├── home2.png
+│   ├── map.png
+│   ├── dash.png
+│   ├── register.png
 │
 └── __pycache__/
-
 
 ⸻
 
