@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature & Humidity and Water Consumption Charts</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(90deg, #7fd4bb, #b9e2a8, #7fd4bb);
+            background-size: 300% 300%;
+            animation: backgroundAnimation 10s ease infinite;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+        }
+    
+        @keyframes backgroundAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    
+        .container {
+            width: 90%;
+            margin: 60px auto;
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+    
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            color: #2a2a2a;
+        }
+    
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+    
+        .top-button {
+            background-color: #7fd4bb;
+            color: #333;
+            border: none;
+            font-size: 16px;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    
+        .top-button:hover {
+            background-color: #5ebd99;
+        }
+    
+        .form-group label {
+            font-size: 16px;
+            margin-bottom: 5px;
+            display: block;
+            color: #2a2a2a;
+        }
+    
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            background-color: #f5f5f5;
+            color: #333;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #7fd4bb;
+            box-shadow: 0 0 5px rgba(127, 212, 187, 0.5);
+        }
+    
+        .add-button {
+            background-color: #7fd4bb;
+            color: #333;
+            font-size: 16px;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    
+        .add-button:hover {
+            background-color: #5ebd99;
+        }
+    
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #ffffff;
+        }
+    
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+    
+        table th {
+            background-color: #7fd4bb;
+            color: #333;
+        }
+    
+        .delete-button {
+            background-color: transparent;
+            color: #f28b82;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: 2px solid #f28b82;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .delete-button:hover {
+            background-color: #f28b82;
+            color: #ffffff;
+        }
+    
+        .email-display {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #333;
+        }
+    
+        .email-display p {
+            margin: 0;
+            font-weight: bold;
+        }
+    </style>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    
+
+</head>
+<body>
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">EZ-Garden</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav" aria-controls="navbarNav"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <!-- ערוצים לדוגמה, מתאימים למה שיש בדף הקודם -->
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/home_company_3">Back</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/home3">Plant List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/map">Map</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/weather">Weather</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/employee_management">Employee Management</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/data_for_kids">Kids</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/issues">Issues</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/efficiency_dashboard">System Efficiency</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        
+    
+        <div class="container">
+            <h1 style="text-align: center;">Dashboard</h1>
+    <!-- כפתורים לייצוא -->
+    <div style="text-align:center; margin-bottom:30px;">
+        <button class="add-button" onclick="exportToPdf()">Export to PDF</button>
+        <button class="add-button" onclick="exportTempHumidityToExcel()">Export to Excel</button>
+    </div>
+    <div style="text-align:center; margin-bottom:30px;">
+        <p>Send to:</p>
+        <input id="emailInput" type="email" placeholder="Enter your email" style="padding:10px; font-size:16px; width:300px; margin-right:10px;">
+        <button class="add-button" onclick="sendEmail()">Send</button>
+    </div>
+    
+
+    <!-- Temperature & Humidity Chart -->
+    <div style="width: 80%; margin: auto; margin-bottom: 50px;" id="tempHumidityContainer">
+        <h2>Temperature & Humidity</h2>
+        <canvas id="tempHumidityChart"></canvas>
+    </div>
+
+    <!-- Water Consumption Chart -->
+    <div style="width: 80%; margin: auto;" id="waterConsumptionContainer">
+        <h2>Water Consumption</h2>
+        <canvas id="waterConsumptionChart"></canvas>
+    </div>
+    <script>
+        async function exportToPdf() {
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF();
+
+            // צילום מסך של גרף הטמפרטורה והלחות
+            const tempHumidityContainer = document.getElementById('tempHumidityContainer');
+            const tempCanvas = await html2canvas(tempHumidityContainer);
+            const tempImgData = tempCanvas.toDataURL('image/png');
+
+            pdf.text('Temperature & Humidity Chart', 10, 10);
+            pdf.addImage(tempImgData, 'PNG', 10, 20, 190, 100);
+
+            // צילום מסך של גרף צריכת המים
+            const waterConsumptionContainer = document.getElementById('waterConsumptionContainer');
+            const waterCanvas = await html2canvas(waterConsumptionContainer);
+            const waterImgData = waterCanvas.toDataURL('image/png');
+
+            pdf.addPage();
+            pdf.text('Water Consumption Chart', 10, 10);
+            pdf.addImage(waterImgData, 'PNG', 10, 20, 190, 100);
+
+            // הורדת ה-PDF
+            pdf.save('graphs.pdf');
+        }
+
+        async function exportTempHumidityToExcel() {
+    console.log("Exporting Temperature & Humidity data to Excel...");
+    try {
+        const tempHumidityData = {
+            labels: tempHumidityChart.data.labels,
+            datasets: tempHumidityChart.data.datasets.map(dataset => ({
+                label: dataset.label,
+                data: dataset.data.slice(0, tempHumidityChart.data.labels.length),
+            })),
+        };
+
+        const response = await fetch('/export_graph', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                graph_data: tempHumidityData,
+            }),
+        });
+
+        if (response.ok) {
+            const blob = await response.blob();
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'temp_humidity_data.xlsx';
+            link.click();
+        } else {
+            console.error('Failed to export Temperature & Humidity data to Excel');
+        }
+    } catch (error) {
+        console.error('Error exporting Temperature & Humidity data to Excel:', error);
+    }
+}
+
+
+        // Fetch and display Temperature & Humidity Data
+        async function fetchTempHumidityData() {
+    try {
+        const waterResponse = await fetch('/data_water');
+        if (!waterResponse.ok) {
+            throw new Error(`HTTP error! status: ${waterResponse.status}`);
+        }
+
+        const waterData = await waterResponse.json();
+        const waterLabels = waterData.dates; // שימוש בתאריכי גרף "צריכת המים"
+
+        const response = await fetch('/data_sensor_by_date');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        // השארת הנתונים הקיימים כמו שהם
+        const temperatures = data.map(entry => entry.Temperature);
+        const humidities = data.map(entry => entry.Humidity);
+
+        // החלפת התאריכים בתאריכי גרף "צריכת המים"
+        const labels = waterLabels; // התאריכים של גרף "צריכת המים"
+
+        const ctx = document.getElementById('tempHumidityChart').getContext('2d');
+        window.tempHumidityChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels, // שימוש בתאריכים של גרף "צריכת המים"
+                datasets: [
+                    {
+                        label: 'Temperature (°C)',
+                        data: temperatures,
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        fill: true,
+                    },
+                    {
+                        label: 'Humidity (%)',
+                        data: humidities,
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        fill: true,
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Date'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Value'
+                        }
+                    }
+                }
+            }
+        });
+    } catch (error) {
+        console.error("Error fetching Temperature & Humidity Data:", error);
+    }
+}
+
+
+        // Fetch and display filtered Water Consumption Data
+        async function fetchWaterConsumptionData() {
+            try {
+                const response = await fetch('/data_water');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                const labels = data.dates;
+                const beforeInstallation = data.before_installation;
+                const afterInstallation = data.after_installation;
+
+                const ctx = document.getElementById('waterConsumptionChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: 'Before Installation (liters)',
+                                data: beforeInstallation,
+                                borderColor: 'rgba(255, 159, 64, 1)',
+                                backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                                fill: true,
+                            },
+                            {
+                                label: 'After Installation (liters)',
+                                data: afterInstallation,
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                fill: true,
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                            tooltip: {
+                                mode: 'index',
+                                intersect: false,
+                            },
+                        },
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Date'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Water Consumption (liters)'
+                                }
+                            }
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error("Error fetching Water Consumption Data:", error);
+            }
+        }
+        
+        async function sendEmail() {
+    const emailInput = document.getElementById('emailInput');
+    const email = emailInput.value;
+
+    if (!email) {
+        alert("Please enter a valid email address!");
+        return;
+    }
+
+    try {
+        // שליחה לשרת עם המייל
+        const response = await fetch('/send-email-with-files', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email }),
+        });
+
+        if (response.ok) {
+            alert("Email with files sent successfully!");
+            emailInput.value = ''; // Clear the input field
+        } else {
+            const error = await response.json();
+            alert(`Error: ${error.message || 'Failed to send email.'}`);
+        }
+    } catch (error) {
+        console.error("Error sending email:", error);
+        alert("An error occurred while sending the email.");
+    }
+}
+
+
+        fetchTempHumidityData();
+        fetchWaterConsumptionData();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

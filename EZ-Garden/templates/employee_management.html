@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Employees</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(90deg, #7fd4bb, #b9e2a8, #7fd4bb);
+            background-size: 300% 300%;
+            animation: backgroundAnimation 10s ease infinite;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes backgroundAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            width: 90%;
+            margin: 60px auto;
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            color: #2a2a2a;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .top-button {
+            background-color: #7fd4bb;
+            color: #333;
+            border: none;
+            font-size: 16px;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .top-button:hover {
+            background-color: #5ebd99;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        .form-group label {
+            font-size: 16px;
+            margin-bottom: 5px;
+            display: block;
+            color: #2a2a2a;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            background-color: #f5f5f5;
+            color: #333;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #7fd4bb;
+            box-shadow: 0 0 5px rgba(127, 212, 187, 0.5);
+        }
+
+        .add-button {
+            background-color: #7fd4bb;
+            color: #333;
+            font-size: 16px;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-button:hover {
+            background-color: #5ebd99;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #ffffff;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        table th {
+            background-color: #7fd4bb;
+            color: #333;
+        }
+
+        .delete-button {
+            background-color: transparent;
+            color: #f28b82;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: 2px solid #f28b82;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .delete-button:hover {
+            background-color: #f28b82;
+            color: #ffffff;
+        }
+
+        .email-display {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #333;
+        }
+
+        .email-display p {
+            margin: 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">EZ-Garden</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home_company_3">Back</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home3">Plant List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/map">Map</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/weather">Weather</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/graphs_select_date">Graphs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/data_for_kids">Kids</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/issues">Issues</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/efficiency_dashboard">system efficiency</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1>Manage Employees</h1>
+            <a href="/home_company_3" class="top-button">Back to Home</a>
+        </div>
+        {% if error_message %}
+            <p style="color: #f28b82;">{{ error_message }}</p>
+        {% endif %}
+        <form action="/employee_management" method="POST">
+            <div class="form-group">
+                <label for="employee_name">Employee Name</label>
+                <input type="text" id="employee_name" name="employee_name" placeholder="Enter employee name" required>
+            </div>
+            <div class="form-group">
+                <label for="employee_password">Employee Password</label>
+                <input type="password" id="employee_password" name="employee_password" placeholder="Enter employee password" required>
+            </div>
+            <div class="form-group">
+                <label for="employee_role">Employee Role</label>
+                <select id="employee_role" name="employee_role" required>
+                    <option value="">Select Role</option>
+                    <option value="1">Basic Employee</option>
+                    <option value="2">Authorized Employee</option>
+                    <option value="3">Manager</option>
+                </select>
+            </div>
+            <button type="submit" class="add-button">Add Employee</button>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Password</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for emp in employees %}
+                    <tr>
+                        <td>{{ emp.name }}</td>
+                        <td>{{ emp.password }}</td>
+                        <td>{{ emp.role }}</td>
+                        <td>
+                            <form action="/delete_employee/{{ emp.id }}" method="POST" style="display: inline;">
+                                <button type="submit" class="delete-button">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

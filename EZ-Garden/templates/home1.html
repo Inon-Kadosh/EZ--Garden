@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EZ-Garden</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(90deg, #7fd4bb, #b9e2a8, #7fd4bb);
+            background-size: 300% 300%;
+            animation: backgroundAnimation 10s ease infinite;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            scroll-behavior: smooth;
+        }
+
+        @keyframes backgroundAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .navbar-brand img {
+            margin-right: 10px;
+        }
+
+        .hero-section {
+            color: #000;
+            padding: 4rem 1rem;
+            text-align: center;
+            flex-grow: 1; /* Ensures the hero section takes the available space */
+        }
+
+        .hero-section h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-section .btn-primary {
+            background-color: #d3f7cc;
+            border: none;
+            color: #2a2a2a;
+        }
+
+        .hero-section .btn-primary:hover {
+            background-color: #b9e2a8;
+        }
+
+        footer {
+            background-color: #7fd4bb !important;
+            color: #333 !important;
+            padding: 2rem 0;
+        }
+
+        footer p {
+            margin: 0;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="/static/logo.svg" alt="" height="30"> EZ-Garden
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="/register_type" class="btn btn-outline-success btn-register">Register</a>
+                    <a href="/login" class="btn btn-outline-primary btn-login">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="px-4 py-5 my-5 text-center hero-section">
+        <img class="d-block mx-auto mb-4" src="/static/logo.svg" alt="" width="200" height="200">
+        <h1 class="display-5 fw-bold text-body-emphasis">EZ-Garden</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">EZ-Garden is revolutionizing urban gardening by integrating cutting-edge technology with sustainable practices. Powered by real-time sensors and smart analytics, our system ensures every plant gets the care it needs—saving water, preventing waste, and promoting greener cities.</p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <button type="button" class="btn btn-primary btn-lg px-4 gap-3" onclick="window.location.href='/login'">Get Started</button>                
+                <button type="button" class="btn btn-outline-secondary btn-lg px-4">Learn More</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="container py-5" id="about">
+        <hr style="border-top: 2px solid white; margin-bottom: 2rem;">
+        <h2 class="text-center fw-bold mb-4">About EZ-Garden</h2>
+        <div class="row align-items-center g-4">
+            <div class="col-md-6">
+                <img src="/static/about.png" alt="About EZ-Garden" class="img-fluid rounded">
+            </div>
+            <div class="col-md-6">
+                <h3 class="fw-bold">Revolutionizing Urban Gardening</h3>
+                <p>
+                    EZ-Garden combines innovative technology and sustainable practices to transform urban gardening. 
+                    Our platform offers real-time monitoring, smart water management, and a user-friendly interface 
+                    to make gardening accessible and efficient for everyone.
+                </p>
+                <p>
+                    Whether you're a beginner or an experienced gardener, EZ-Garden empowers you with tools to grow 
+                    healthier plants, save water, and contribute to greener cities.
+                </p>
+                <a href="#features" class="btn btn-primary">Explore Features</a>
+            </div>
+        </div>
+    </section>
+    
+    
+
+    <div class="container marketing">
+
+        <!-- Styled Horizontal Line -->
+
+
+
+    <!-- Features Section -->
+    <div class="container px-4 py-5" id="features">
+        <h2 class="pb-2 border-bottom">Features</h2>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+            <!-- Feature 1 -->
+            <div class="col d-flex align-items-start">
+                <img src="/static/features/balloon.svg" alt="Friendly Interface Icon" class="flex-shrink-0 me-3" width="28" height="28">
+                <div>
+                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Friendly Interface</h3>
+                    <p>Navigate your gardening tools effortlessly with an intuitive and user-friendly design.</p>
+                </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="col d-flex align-items-start">
+                <img src="/static/features/bell.svg" alt="Real-Time Monitoring Icon" class="flex-shrink-0 me-3" width="28" height="28">
+                <div>
+                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Real-Time Monitoring</h3>
+                    <p>Get live updates on soil moisture, temperature, and humidity for optimal care.</p>
+                </div>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="col d-flex align-items-start">
+                <img src="/static/features/droplet.svg" alt="Water Efficiency Icon" class="flex-shrink-0 me-3" width="28" height="28">
+                <div>
+                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Water Efficiency</h3>
+                    <p>Reduce water waste with smart tools that provide plants with just the right amount of hydration.</p>
+                </div>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="col d-flex align-items-start">
+                <img src="/static/features/calendar-check.svg" alt="Custom Schedules Icon" class="flex-shrink-0 me-3" width="28" height="28">
+                <div>
+                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Custom Schedules</h3>
+                    <p>Set and manage personalized watering schedules to meet your garden's needs.</p>
+                </div>
+            </div>
+
+            <!-- Feature 5 -->
+            <div class="col d-flex align-items-start">
+                <img src="/static/features/cloud-sun.svg" alt="Weather Integration Icon" class="flex-shrink-0 me-3" width="28" height="28">
+                <div>
+                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Weather Integration</h3>
+                    <p>Access real-time weather updates to plan your gardening activities effectively.</p>
+                </div>
+            </div>
+
+            <!-- Feature 6 -->
+            <div class="col d-flex align-items-start">
+                <img src="/static/features/bar-chart-line.svg" alt="Data Visualization Icon" class="flex-shrink-0 me-3" width="28" height="28">
+                <div>
+                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Data Visualization</h3>
+                    <p>Analyze trends with clear and engaging charts and graphs for better decision-making.</p>
+                </div>
+            </div>
+
+            <!-- Feature 7 -->
+            <div class="col d-flex align-items-start">
+                <img src="/static/features/right_of_the_box.svg" alt="Simplicity Icon" class="flex-shrink-0 me-3" width="28" height="28">
+                <div>
+                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Simple To Use</h3>
+                    <p>Start managing your garden instantly with a hassle-free setup and easy-to-use tools.</p>
+                </div>
+            </div>
+
+            <!-- Feature 8 -->
+            <div class="col d-flex align-items-start">
+                <img src="/static/features/tools.svg" alt="Sustainability Icon" class="flex-shrink-0 me-3" width="28" height="28">
+                <div>
+                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Sustainability</h3>
+                    <p>Support eco-friendly gardening by reducing water waste and promoting greener cities.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <!-- FAQs Section -->
+<section class="container py-5" id="faqs">
+    <hr style="border-top: 2px solid white; margin-bottom: 2rem;">
+    <h2 class="text-center fw-bold mb-4">FAQs</h2>
+    <div class="accordion accordion-green" id="faqAccordion">
+        <!-- FAQ Item 1 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="faqHeadingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseOne" aria-expanded="true" aria-controls="faqCollapseOne">
+                    What is EZ-Garden?
+                </button>
+            </h2>
+            <div id="faqCollapseOne" class="accordion-collapse collapse show" aria-labelledby="faqHeadingOne" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    EZ-Garden is a smart gardening solution that combines technology and sustainability to help you manage your garden efficiently and eco-friendly.
+                </div>
+            </div>
+        </div>
+        
+        <!-- FAQ Item 2 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="faqHeadingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseTwo" aria-expanded="false" aria-controls="faqCollapseTwo">
+                    How does EZ-Garden work?
+                </button>
+            </h2>
+            <div id="faqCollapseTwo" class="accordion-collapse collapse" aria-labelledby="faqHeadingTwo" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    EZ-Garden uses real-time sensors and smart analytics to monitor soil moisture, weather conditions, and more. It helps you optimize watering and plant care to save resources.
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Item 3 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="faqHeadingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseThree" aria-expanded="false" aria-controls="faqCollapseThree">
+                    Is EZ-Garden suitable for beginners?
+                </button>
+            </h2>
+            <div id="faqCollapseThree" class="accordion-collapse collapse" aria-labelledby="faqHeadingThree" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Absolutely! EZ-Garden is designed for gardeners of all skill levels with its intuitive interface and helpful guidance.
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Item 4 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="faqHeadingFour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseFour" aria-expanded="false" aria-controls="faqCollapseFour">
+                    What are the key features of EZ-Garden?
+                </button>
+            </h2>
+            <div id="faqCollapseFour" class="accordion-collapse collapse" aria-labelledby="faqHeadingFour" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Key features include real-time monitoring, water efficiency tools, customizable schedules, weather integration, and data visualization for smarter gardening.
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Item 5 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="faqHeadingFive">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseFive" aria-expanded="false" aria-controls="faqCollapseFive">
+                    How can I get started with EZ-Garden?
+                </button>
+            </h2>
+            <div id="faqCollapseFive" class="accordion-collapse collapse" aria-labelledby="faqHeadingFive" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Simply register on our platform, set up your garden profile, and start exploring the features to optimize your gardening experience.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Custom CSS -->
+<style>
+    .accordion-green .accordion-button {
+        background-color: #d3f7cc;
+        color: #2a2a2a;
+        border: 1px solid #7fd4bb;
+    }
+
+    .accordion-green .accordion-button:focus {
+        box-shadow: 0 0 0 0.25rem rgba(127, 212, 187, 0.5);
+    }
+
+    .accordion-green .accordion-button:not(.collapsed) {
+        background-color: #b9e2a8;
+        color: #2a2a2a;
+    }
+
+    .accordion-green .accordion-collapse {
+        border-top: 1px solid #7fd4bb;
+    }
+</style>    <div class="container marketing">
+        <h2 class="pb-2 border-bottom text-center">Recommendations & Reviews</h2>
+        <div class="row text-center py-4">
+            <!-- Mark Zuckerberg Review -->
+            <div class="col-lg-4">
+                <img src="/static/reviews/mark zuckerburg.jpeg" alt="Mark Zuckerberg" class="rounded-circle mb-3" width="140" height="140">
+                <h2 class="fw-normal">Mark Zuckerberg</h2>
+                <p>"EZ-Garden's smart technology is a game-changer for urban gardening. It simplifies plant care while promoting sustainability."</p>
+            </div>
+    
+            <!-- Elon Musk Review -->
+            <div class="col-lg-4">
+                <img src="/static/reviews/elon musk.jpeg" alt="Elon Musk" class="rounded-circle mb-3" width="140" height="140">
+                <h2 class="fw-normal">Elon Musk</h2>
+                <p>"Combining innovation with sustainability, EZ-Garden is an outstanding solution for future-forward gardening."</p>
+            </div>
+    
+            <!-- Bill Gates Review -->
+            <div class="col-lg-4">
+                <img src="/static/reviews/bill gates.jpeg" alt="Bill Gates" class="rounded-circle mb-3" width="140" height="140">
+                <h2 class="fw-normal">Bill Gates</h2>
+                <p>"EZ-Garden is not just a gardening tool—it's a powerful system that saves water and supports eco-friendly practices."</p>
+            </div>
+    
+            
+    
+   <!-- Footer -->
+<footer class="py-3 my-4">
+    <div class="container">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+            <li class="nav-item"><a href="#features" class="nav-link px-2 text-body-secondary">Features</a></li>
+            <li class="nav-item">
+                <a href="#" class="nav-link px-2 text-body-secondary" data-bs-toggle="modal" data-bs-target="#contactModal">Contact Us</a>
+            </li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+            <li class="nav-item"><a href="#about" class="nav-link px-2 text-body-secondary">About</a></li>
+        </ul>
+        <p class="text-center">© 2024 Company, Inc</p>
+    </div>
+</footer>
+
+<!-- Contact Us Modal -->
+<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="contactModalLabel">Contact Us</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="contactForm">
+                    <div class="mb-3">
+                        <label for="contactName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="contactName" placeholder="Your name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contactEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="contactEmail" placeholder="Your email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contactMessage" class="form-label">Message</label>
+                        <textarea class="form-control" id="contactMessage" rows="4" placeholder="Your message" required></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        alert('Thank you for contacting us! We will get back to you soon.');
+        const modal = bootstrap.Modal.getInstance(document.getElementById('contactModal'));
+        modal.hide();
+    });
+</script>
+
+    <!-- Scripts -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const target = document.getElementById(targetId);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

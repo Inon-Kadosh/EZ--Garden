@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plants in {{ neighborhood }}</title>
+    <style>
+        html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(90deg, #7fd4bb, #b9e2a8, #7fd4bb);
+    background-size: 300% 300%;
+    animation: backgroundAnimation 10s ease infinite;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes backgroundAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+        body[data-bs-theme="dark"] {
+            background-color: #222;
+            color: #dff4d9;
+        }
+
+        body[data-bs-theme="light"] {
+            background-color: #e9f7ea; /* Light green background */
+            color: #333; /* Dark text */
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #333;
+            color: #dff4d9;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body[data-bs-theme="light"] .navbar {
+            background-color: #7fd4bb;
+            color: #333;
+        }
+
+        .navbar a {
+            color: inherit;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .navbar a:hover {
+            color: #b7e4a1;
+        }
+
+        .container {
+    width: 90%;
+    margin: 60px auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+
+        body[data-bs-theme="light"] .container {
+            background-color: #ffffff;
+            border-color: #7fd4bb;
+        }
+
+        h1 {
+    font-size: 2.5rem;
+    color: #000;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        li {
+    margin: 10px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+
+        body[data-bs-theme="light"] li {
+            background-color: #f1f1f1;
+            border-color: #7fd4bb;
+        }
+
+        .button {
+            padding: 8px 15px;
+            border-radius: 10px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .data-btn {
+            border: 2px solid #5c9eff;
+            background-color: transparent;
+            color: #5c9eff;
+        }
+
+        .data-btn:hover {
+            background-color: #5c9eff;
+            color: white;
+        }
+
+        .delete-btn {
+            border: 2px solid #ff5c5c;
+            background-color: transparent;
+            color: #ff5c5c;
+        }
+
+        .delete-btn:hover {
+            background-color: #ff5c5c;
+            color: white;
+        }
+
+        .add-btn {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px;
+    text-align: center;
+    background-color: #7fd4bb;
+    color: #333;
+    border: 2px solid #7fd4bb;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.add-btn:hover {
+    background-color: #5ebd99;
+    border-color: #5ebd99;
+    color: #ffffff;
+}
+
+
+        .add-btn:hover {
+            background-color: #4cae4c;
+            border-color: #4cae4c;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #dff4d9;
+            text-align: center;
+            padding: 10px 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body[data-bs-theme="light"] .footer {
+            background-color: #7fd4bb;
+            color: #333;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 65px;
+            right: 20px;
+        }
+
+        .theme-toggle button {
+            padding: 8px 12px;
+            font-size: 14px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .theme-toggle button:hover {
+            background-color: #0056b3;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body data-bs-theme="dark">
+    <!-- Navbar -->
+    <div class="navbar">
+        <div>
+            <a href="/">Home</a>
+            <a href="/home_company_3">Back</a>
+        </div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <button onclick="toggleTheme()">Theme</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Plants in {{ neighborhood }}</h1>
+        <ul>
+            {% for plant in plants %}
+                <li>
+                    <div>
+                        {{ "Area: " }}{{ plant.area }}, {{ "Type: " }}{{ plant.type }}
+                    </div>
+                    <div>
+                        <!-- Data Button -->
+                        <a href="/plant_details/{{ plant.type }}">
+                            <button class="button data-btn">Data</button>
+                        </a>
+                        <!-- Delete Button -->
+                        <form action="/delete_plant/{{ plant.id }}" method="POST" style="display:inline;">
+                            <button class="button delete-btn">Delete</button>
+                        </form>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <div>
+            <a href="/add_plant" class="add-btn">Add Plant</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 EZ-Garden. All rights reserved.</p>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute("data-bs-theme") || "dark";
+            const newTheme = currentTheme === "light" ? "dark" : "light";
+            body.setAttribute("data-bs-theme", newTheme);
+        }
+    </script>
+</body>
+</html>

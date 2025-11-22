@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(90deg, #7fd4bb, #b9e2a8, #7fd4bb);
+            background-size: 300% 300%;
+            animation: backgroundAnimation 10s ease infinite;
+            color: #333;
+        }
+
+        @keyframes backgroundAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .navbar {
+            background-color: #fff;
+            padding: 5px 15px;
+            border: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #000;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .navbar-nav {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .nav-item {
+            list-style-type: none;
+        }
+
+        .nav-link {
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            padding: 0;
+            margin: 0;
+            background: none;
+            border: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #007BFF;
+        }
+
+        .nav-link.active {
+            font-weight: bold;
+            color: #000;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .table-container {
+            width: 45%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .chart-container {
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        canvas {
+            width: 800px !important; 
+            height: 600px !important;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .conclusion-container {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .conclusion-container h2 {
+            color: darkred;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">EZ-Garden</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home_company_3">Back</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/employee_management">Employee Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home3">Plant List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/weather">Weather</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/graphs_select_date">Graphs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/data_for_kids">Kids</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <h1>Maintenance and Events Dashboard</h1>
+
+    <div class="container">
+        <div class="table-container">
+            <h2>Temperature Table</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Temperature (&#8451;)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in temperature_data %}
+                    <tr>
+                        <td>{{ row["Month"] }}</td>
+                        <td>{{ row["Start Date"] }}</td>
+                        <td>{{ row["End Date"] }}</td>
+                        <td>{{ row["Temperature (°C)"] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="table-container">
+            <h2>Humidity Table</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Humidity (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in humidity_data %}
+                    <tr>
+                        <td>{{ row["Month"] }}</td>
+                        <td>{{ row["Start Date"] }}</td>
+                        <td>{{ row["End Date"] }}</td>
+                        <td>{{ row["Humidity (%)"] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="chart-container">
+        <h2>Monthly Trends for Temperature and Humidity</h2>
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <div class="conclusion-container">
+        <h2>Periodic Maintenance Conclusion</h2>
+        <p>In August, higher than usual temperatures increase the risk of fire.</p>
+        <p>According to maintenance data, high humidity every three months causes pipe explosions.</p>
+    </div>
+
+    <div class="button-container">
+        <h3>Select Month to Check Alerts</h3>
+        <select id="month-select">
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+        </select>
+        <button onclick="showAlert()">Check Alert</button>
+    </div>
+
+    <script>
+        let myChart = null;
+
+        function showAlert() {
+            const monthSelect = document.getElementById('month-select');
+            const selectedMonth = monthSelect.value;
+            const alerts = {
+                "March": "Alert: High humidity, check pipes.",
+                "June": "Alert: High humidity, check pipes.",
+                "September": "Alert: High humidity, check pipes.",
+                "December": "Alert: High humidity, check pipes.",
+                "July": "Alert: High temperature, ensure fire extinguishers are available.",
+                "August": "Critical alert: Extremely high temperature, ensure fire extinguishers are available."
+            };
+            alert(alerts[selectedMonth] || "No alerts for this month.");
+        }
+
+        const months = {{ months|tojson }};
+        const temperatures = {{ temperatures|tojson }};
+        const humidity = {{ humidity|tojson }};
+
+        function createChart() {
+            if (myChart) {
+                return;
+            }
+
+            const ctx = document.getElementById('myChart').getContext('2d');
+            myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: months,
+                    datasets: [
+                        {
+                            label: 'Temperature (°C)',
+                            data: temperatures,
+                            borderColor: 'red',
+                            backgroundColor: 'rgba(255, 0, 0, 0.1)',
+                            fill: true,
+                            tension: 0.1
+                        },
+                        {
+                            label: 'Humidity (%)',
+                            data: humidity,
+                            borderColor: 'blue',
+                            backgroundColor: 'rgba(0, 0, 255, 0.1)',
+                            fill: true,
+                            tension: 0.1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: false,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Monthly Trends for Temperature and Humidity'
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Months'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Value'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', createChart);
+    </script>
+</body>
+</html>

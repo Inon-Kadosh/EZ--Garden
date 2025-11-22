@@ -1,0 +1,12 @@
+[
+    {"name": "Mitzpe School", "water_consumption": 1200},
+    {"name": "Alumot School", "water_consumption": 980},
+    {"name": "Ilanot School", "water_consumption": 1500},
+    {"name": "Amirim School", "water_consumption": 1700},
+    {"name": "Moledet School", "water_consumption": 900},
+    {"name": "Neve Menachem School", "water_consumption": 1100},
+    {"name": "Meir School", "water_consumption": 1300},
+    {"name": "Tomer School", "water_consumption": 800},
+    {"name": "Ben Gurion School", "water_consumption": 2000},
+    {"name": "Hayovel School", "water_consumption": 1400}
+]

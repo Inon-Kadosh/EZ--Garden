@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planting Experiment - Tomato Plant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #7fd4bb;
+            padding: 20px 0;
+            text-align: center;
+            color: #fff;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .step {
+            margin-bottom: 20px; /* Space between steps */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+        }
+
+        .step:hover {
+            transform: scale(1.05); /* Grows the container slightly */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Adds a shadow on hover */
+        }
+
+
+        .step img {
+            width: 30%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        footer {
+            background-color: #7fd4bb;
+            text-align: center;
+            padding: 10px 0;
+            color: #fff;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .step-content {
+            display: flex; /* Align items horizontally */
+            align-items: center; /* Vertically center content */
+            gap: 20px; /* Space between image and text */
+            background: #fff; /* White background for content */
+            border-radius: 8px; /* Rounded corners */
+            overflow: hidden; /* Prevent content overflow */
+            padding: 15px; /* Add padding inside the container */
+        }
+
+        .step-content:hover {
+            transform: scale(1.05); /* Grows the container slightly */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Adds a shadow on hover */
+        }
+
+        .step-text{
+            flex: 1;
+        }
+
+        .step h3 {
+            margin: 0 0 10px;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .step p {
+            margin: 0;
+            font-size: 1rem;
+            color: #666;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>How to Plant a Tomato Plant</h1>
+        <p>A fun and rewarding planting experiment for kids!</p>
+    </header>
+
+    <div class="container">
+        <div class="step">
+            <div class="step-content">
+                <img src="/static/step1_materials.jpg" alt="Materials for planting">
+                <div class="step-text">
+                    <h3>Step 1: Gather Your Materials</h3>
+                    <p>You will need tomato seeds, a small pot, soil, water, and a sunny spot.</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="step">
+            <div class="step-content">
+                <img src="/static/step2_soil.jpg" alt="Filling pot with soil">
+                <div class="step-text">
+                    <h3>Step 2: Fill the Pot with Soil</h3>
+                    <p>Fill the pot about 3/4 full with nutrient-rich soil to provide a good environment for the seeds.</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="step">
+            <div class="step-content">
+                <img src="/static/step3_seeds.jpg" alt="Planting tomato seeds">
+                <div class="step-text">
+                    <h3>Step 3: Plant the Seeds</h3>
+                    <p>Make small holes in the soil, about 1/4 inch deep, and place 2-3 tomato seeds in each hole. Cover lightly with soil.</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="step">
+            <div class="step-content">
+                <img src="/static/step4_watering.jpg" alt="Watering the soil">
+                <div class="step-text">
+                    <h3>Step 4: Water the Soil</h3>
+                    <p>Gently water the soil to make it moist but not soggy. Be careful not to overwater.</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="step">
+            <div class="step-content">
+                <img src="/static/step5_sunny.jpg" alt="Placing the pot in a sunny spot">
+                <div class="step-text">
+                    <h3>Step 5: Place in a Sunny Spot</h3>
+                    <p>Put the pot in a sunny location, such as a windowsill or balcony, to ensure the seeds get enough light.</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="step">
+            <div class="step-content">
+                <img src="/static/step6_growth.jpg" alt="Growing tomato plant">
+                <div class="step-text">
+                    <h3>Step 6: Watch Them Grow!</h3>
+                    <p>Within a few days to a week, you should see small sprouts. Keep watering regularly and watch your tomato plant grow!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 EZ-Garden. Happy Planting!</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neighborhood Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(90deg, #7fd4bb, #b9e2a8, #7fd4bb);
+            background-size: 300% 300%;
+            animation: backgroundAnimation 10s ease infinite;
+            color: #333;
+        }
+
+        @keyframes backgroundAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        #map {
+            height: 80vh;
+        }
+
+        .navbar {
+            background-color: #fff;
+            padding: 5px 15px;
+            border: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #000;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .navbar-nav {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .nav-item {
+            list-style-type: none;
+        }
+
+        .nav-link {
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            padding: 0;
+            margin: 0;
+            background: none;
+            border: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #007BFF;
+        }
+
+        .nav-link.active {
+            font-weight: bold;
+            color: #000;
+        }
+
+        .popup-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .popup-button, .toggle-button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .popup-button:hover {
+            background-color: #0056b3;
+        }
+
+        .toggle-button {
+            background-color: #28a745;
+        }
+
+        .toggle-button.inactive {
+            background-color: #dc3545;
+        }
+
+        .footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">EZ-Garden</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home_company_3">Back</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/employee_management">Employee Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home3">Plant List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/weather">Weather</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/graphs_select_date">Graphs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/data_for_kids">Kids</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/issues">Issues</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/efficiency_dashboard">system efficiency</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="map"></div>
+
+    <footer class="footer mt-auto py-3 bg-dark text-white text-center">
+        <div class="container">
+            Company 3 © 2025
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        const map = L.map('map').setView([31.252973, 34.791462], 14);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19
+        }).addTo(map);
+
+        fetch('/static/map.geojson')
+            .then(response => response.json())
+            .then(data => {
+                L.geoJSON(data, {
+                    onEachFeature: function (feature, layer) {
+                        const neighborhoodName = feature.properties.name || "Unknown Neighborhood";
+                        let isActive = true;
+
+                        function updateStyle() {
+                            const color = isActive ? "green" : "red";
+                            layer.setStyle({ color });
+                        }
+
+                        updateStyle();
+
+                        function toggleActiveStatus(button) {
+                            isActive = !isActive;
+                            updateStyle();
+                            button.textContent = isActive ? "Active" : "Inactive";
+                            button.classList.toggle('inactive', !isActive);
+                            console.log(`Status of ${neighborhoodName} is now ${isActive ? "Active" : "Inactive"}`);
+                        }
+
+                        const popupContent = document.createElement('div');
+                        popupContent.className = 'popup-content';
+                        const title = document.createElement('strong');
+                        title.textContent = neighborhoodName;
+                        popupContent.appendChild(title);
+
+                        const viewButton = document.createElement('button');
+                        viewButton.className = 'popup-button';
+                        viewButton.textContent = 'View Plants';
+                        viewButton.onclick = () => viewPlants(neighborhoodName);
+                        popupContent.appendChild(viewButton);
+
+                        const toggleButton = document.createElement('button');
+                        toggleButton.className = 'toggle-button';
+                        toggleButton.textContent = 'Active';
+                        toggleButton.onclick = () => toggleActiveStatus(toggleButton);
+                        popupContent.appendChild(toggleButton);
+
+                        layer.bindPopup(popupContent);
+                    },
+                    style: function () {
+                        return { color: "green", weight: 2, fillOpacity: 0.2 };
+                    }
+                }).addTo(map);
+            });
+
+        function viewPlants(neighborhoodName) {
+            window.location.href = `/plants_by_area?neighborhood=${encodeURIComponent(neighborhoodName)}`;
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

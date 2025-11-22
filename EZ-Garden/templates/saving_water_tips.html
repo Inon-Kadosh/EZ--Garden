@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saving Water Tips</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #7fd4bb;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin: 10px 0 0;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        .tip {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 15px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tip:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .tip img {
+            flex: 0 0 30%;
+            max-width: 30%;
+            height: auto;
+            border-radius: 8px;
+            margin-right: 15px;
+        }
+
+        .tip-content {
+            flex: 1;
+        }
+
+        .tip-content h3 {
+            margin: 0 0 10px;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .tip-content p {
+            margin: 0;
+            font-size: 1rem;
+            color: #666;
+        }
+
+        footer {
+            background-color: #7fd4bb;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">EZ-Garden</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/planting-experiment">Planting Experiment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/saving-water-tips">Saving Water Tips</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/data-for-kids">Educational Projects</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Saving Water Tips</h1>
+        <p>Simple and effective ways to conserve water</p>
+    </header>
+
+    <div class="container">
+        <!-- Tip 1 -->
+        <div class="tip">
+            <img src="/static/turn_off_tap.jpg" alt="Turn off the tap">
+            <div class="tip-content">
+                <h3>Tip 1: Turn Off the Tap</h3>
+                <p>Don’t leave the water running when brushing your teeth or washing dishes. Save up to 6 liters per minute.</p>
+            </div>
+        </div>
+
+        <!-- Tip 2 -->
+        <div class="tip">
+            <img src="/static/take_shorter_showers.jpg" alt="Take shorter showers">
+            <div class="tip-content">
+                <h3>Tip 2: Take Shorter Showers</h3>
+                <p>Reduce your shower time by just 2 minutes to save up to 20 liters of water each time.</p>
+            </div>
+        </div>
+
+        <!-- Tip 3 -->
+        <div class="tip">
+            <img src="/static/water_plants_in_the_morning.jpg" alt="Water plants efficiently">
+            <div class="tip-content">
+                <h3>Tip 3: Water Plants in the Morning</h3>
+                <p>Watering plants early in the morning reduces evaporation and helps them absorb water better.</p>
+            </div>
+        </div>
+
+        <!-- Tip 4 -->
+        <div class="tip">
+            <img src="/static/fix_leaky_faucets.jpg" alt="Fix leaky faucets">
+            <div class="tip-content">
+                <h3>Tip 4: Fix Leaky Faucets</h3>
+                <p>Fix leaks promptly. A dripping tap can waste more than 15 liters of water a day.</p>
+            </div>
+        </div>
+
+        <!-- Tip 5 -->
+        <div class="tip">
+            <img src="/static/reuse_water.jpg" alt="Reuse water">
+            <div class="tip-content">
+                <h3>Tip 5: Reuse Water</h3>
+                <p>Collect rainwater or reuse water from washing vegetables to water your garden.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 EZ-Garden. Conserve water, save the planet!</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

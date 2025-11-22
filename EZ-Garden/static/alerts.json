@@ -1,0 +1,100 @@
+[
+    {
+        "date": "20.01.2025",
+        "region": "Ramot",
+        "priority": "Medium",
+        "issue": "Water leakage",
+        "technicians": ["Plumber", "Maintenance Specialist", "Maintenance Manager"]
+    },
+    {
+        "date": "20.01.2025",
+        "region": "Neighborhood B",
+        "priority": "Low",
+        "issue": "Sensor issue",
+        "technicians": ["Sensor Specialist", "Electrician", "Maintenance Manager"]
+    },
+    {
+        "date": "21.01.2025",
+        "region": "Old City",
+        "priority": "Critical",
+        "issue": "Pipe explosion",
+        "technicians": ["Plumber", "Maintenance Manager", "Maintenance Specialist"]
+    },
+    {
+        "date": "21.01.2025",
+        "region": "Neve Noy",
+        "priority": "Critical",
+        "issue": "Major water leakage",
+        "technicians": ["Plumber", "Maintenance Specialist", "Project Manager"]
+    },
+    {
+        "date": "22.01.2025",
+        "region": "Neighborhood C",
+        "priority": "Low",
+        "issue": "Network issue",
+        "technicians": ["Network Specialist", "Electrician", "Maintenance Manager"]
+    },
+    {
+        "date": "22.01.2025",
+        "region": "Neve Zeev",
+        "priority": "Medium",
+        "issue": "Unresponsive sensor",
+        "technicians": ["Sensor Specialist", "Maintenance Specialist", "Electrician"]
+    },
+    {
+        "date": "23.01.2025",
+        "region": "Section 7",
+        "priority": "Low",
+        "issue": "Minor pipe issue",
+        "technicians": ["Plumber", "Maintenance Specialist", "Maintenance Manager"]
+    },
+    {
+        "date": "23.01.2025",
+        "region": "Neighborhood A",
+        "priority": "Critical",
+        "issue": "Main pipe explosion",
+        "technicians": ["Plumber", "Maintenance Specialist", "Senior Maintenance Manager"]
+    },
+    {
+        "date": "24.01.2025",
+        "region": "Nahal Ashan",
+        "priority": "Medium",
+        "issue": "Low water pressure",
+        "technicians": ["Plumber", "Maintenance Specialist", "Pipe Specialist"]
+    },
+    {
+        "date": "24.01.2025",
+        "region": "Kalanit",
+        "priority": "Critical",
+        "issue": "Severe water leakage",
+        "technicians": ["Plumber", "Maintenance Manager", "Maintenance Specialist"]
+    },
+    {
+        "date": "25.01.2025",
+        "region": "Neighborhood D",
+        "priority": "Low",
+        "issue": "Old sensor",
+        "technicians": ["Sensor Specialist", "Electrician", "Maintenance Manager"]
+    },
+    {
+        "date": "25.01.2025",
+        "region": "Neot Lon",
+        "priority": "Critical",
+        "issue": "Pipe explosion",
+        "technicians": ["Plumber", "Maintenance Manager", "Maintenance Specialist"]
+    },
+    {
+        "date": "26.01.2025",
+        "region": "Neighborhood Yod Aleph",
+        "priority": "Low",
+        "issue": "Minor pipe issue",
+        "technicians": ["Plumber", "Maintenance Specialist", "Maintenance Manager"]
+    },
+    {
+        "date": "26.01.2025",
+        "region": "Nahal Beqata",
+        "priority": "Critical",
+        "issue": "Severe water leakage",
+        "technicians": ["Plumber", "Maintenance Specialist", "Maintenance Manager"]
+    }
+]

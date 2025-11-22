@@ -1,0 +1,58 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.5s ease, color 0.5s ease;
+    background: linear-gradient(90deg, #7fd4bb, #b9e2a8, #7fd4bb);
+    background-size: 300% 300%;
+    animation: backgroundAnimation 10s ease infinite;
+    color: #333;
+}
+
+body.dark-mode {
+    background-color: #121212; /* רקע כהה */
+    color: #ffffff; /* טקסט לבן */
+    animation: none; /* ביטול אנימציות */
+}
+
+body.light-mode {
+    background-color: #ffffff; /* רקע לבן */
+    color: #000000; /* טקסט שחור */
+    animation: none; /* ביטול אנימציות */
+}
+
+@keyframes backgroundAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+#accessibility-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007BFF;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#accessibility-widget button {
+    width: 100px;
+    background: white;
+    color: #007BFF;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+}

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .table-container {
+            width: 45%; /* כל טבלה תקבל 45% מרוחב הדף */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .graph-container {
+            text-align: center;
+            margin-top: 20px; /* רווח מתחת לטבלאות */
+        }
+
+        .graph-container img {
+            width: 90%; 
+            height: auto;
+        }
+
+        .conclusion-container {
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .conclusion-container p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        select {
+            margin-right: 10px;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Maintenance and Events Dashboard</h1>
+
+    <!-- הטבלאות -->
+    <div class="container">
+        
+        <!-- טבלת הטמפרטורה -->
+        <div class="table-container">
+            <h2>Temperature Table</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Temperature (°C)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in temperature_data %}
+                    <tr>
+                        <td>{{ row["Month"] }}</td>
+                        <td>{{ row["Start Date"] }}</td>
+                        <td>{{ row["End Date"] }}</td>
+                        <td>{{ row["Temperature (°C)"] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- טבלת הלחות -->
+        <div class="table-container">
+            <h2>Humidity Table</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Humidity (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in humidity_data %}
+                    <tr>
+                        <td>{{ row["Month"] }}</td>
+                        <td>{{ row["Start Date"] }}</td>
+                        <td>{{ row["End Date"] }}</td>
+                        <td>{{ row["Humidity (%)"] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <!-- הגרף מתחת לטבלאות -->
+    <div class="graph-container">
+        <h2>Monthly Trends</h2>
+        <img src="{{ graph_url }}" alt="Monthly Trends Graph">
+    </div>
+
+    <!-- מסקנות מתחת לגרף -->
+    <div class="conclusion-container">
+        <h2>מסקנה תחזוקה תקופתית</h2>
+        <p>בחודשי אוגוסט טמפרטורה גבוהה מהרגיל בעקבות כך, הסיכוי לשריפה גבוהה </p>
+        <p>על ידי הלחות ניתן לראות שבערך בכל תקופה של שלושה חודשים יש פיצוץ בצנרת </p>
+    </div>
+
+    <!-- תפריט הבחירה -->
+    <div class="button-container">
+        <h3>בחר חודש כדי לבדוק התראה</h3>
+        <select id="month-select">
+            <option value="January">ינואר</option>
+            <option value="February">פברואר</option>
+            <option value="March">מרץ</option>
+            <option value="April">אפריל</option>
+            <option value="May">מאי</option>
+            <option value="June">יוני</option>
+            <option value="July">יולי</option>
+            <option value="August">אוגוסט</option>
+            <option value="September">ספטמבר</option>
+            <option value="October">אוקטובר</option>
+            <option value="November">נובמבר</option>
+            <option value="December">דצמבר</option>
+        </select>
+        <button onclick="showAlert()">בדוק התראה</button>
+    </div>
+
+    <script>
+        function showAlert() {
+            const monthSelect = document.getElementById('month-select');
+            const selectedMonth = monthSelect.value;
+            const alerts = {
+                "March": "התראה דחופה: יש להביא צינורות.",
+                "June": "התראה דחופה: יש להביא צינורות.",
+                "September": "התראה דחופה: יש להביא צינורות.",
+                "December": "התראה דחופה: יש להביא צינורות.",
+                "July": "תחזוקה מתקרבת: יש להביא מטפים.",
+                "August": "תחזוקה דחופה: יש להביא מטפים."
+            };
+
+            const message = alerts[selectedMonth] || "אין התראה לחודש זה.";
+            alert(message);
+        }
+    </script>
+
+</body>
+</html>

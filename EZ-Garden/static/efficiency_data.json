@@ -1,0 +1,40 @@
+{
+  "efficiency_data": [
+      {
+          "id": "waterSaving",
+          "label": "Water Saving",
+          "description": "Tracking water savings over time in urban irrigation.",
+          "desired_efficiency": "20%",
+          "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+          "data": [2, 4, 6, 8, 10, 12, 14, 16, 18, 19, 20, 20],
+          "summary": "Within 12 months, water savings reached 20%."
+      },
+      {
+          "id": "accuracy",
+          "label": "Irrigation Accuracy Improvement",
+          "description": "Improving irrigation efficiency by optimizing timing and water quantity.",
+          "desired_efficiency": "90%",
+          "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+          "data": [10, 20, 30, 40, 50, 60, 70, 75, 80, 85, 90, 90],
+          "summary": "Within 12 months, accuracy improvement reached 90%."
+      },
+      {
+          "id": "maintenance",
+          "label": "Maintenance Cost Reduction",
+          "description": "Tracking maintenance cost reductions through workflow optimization.",
+          "desired_efficiency": "20%",
+          "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+          "data": [5, 10, 12, 14, 16, 17, 18, 19, 19.5, 20, 20, 20],
+          "summary": "Within 12 months, maintenance cost reduction reached 20%."
+      },
+      {
+          "id": "plantHealth",
+          "label": "Plant Health Improvement",
+          "description": "Improving plant health metrics through tailored environmental monitoring.",
+          "desired_efficiency": "15%",
+          "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+          "data": [1, 2, 3, 4, 5, 6, 7, 9, 10, 12, 14, 15],
+          "summary": "Within 12 months, plant health improved by 15%."
+      }
+  ]
+}
