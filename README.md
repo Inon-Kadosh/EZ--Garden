@@ -1,7 +1,9 @@
-EZ-Garden
+🌿 EZ-Garden 🌿
 
 A next‑generation smart garden management system built with Flask, Firebase Firestore, and a modern web UI.EZ‑Garden empowers municipalities, companies, and private gardeners with real‑time insights, visual dashboards, automated maintenance tools, and interactive maps.
+
 ⸻
+
 📌 About This Project
 EZ‑Garden combines technology + sustainability to create a powerful yet simple platform for managing plants, areas, employees, maintenance tasks, and educational content.Designed for both urban environments and large garden operations, the system helps you:
 
