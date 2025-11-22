@@ -8,7 +8,7 @@ A smart garden management system built with Flask + Firebase Firestore, includin
 
 🌿 Overview
 
-EZ-Garden is a complete management platform for gardens, farms, municipalities, and green companies. It allows administrators and employees to track plant data, manage areas, record issues, analyze efficiency, and access visual dashboards.
+EZ‑Garden is a complete management platform for gardens, farms, municipalities, and green companies. It allows administrators and employees to track plant data, manage areas, record issues, analyze efficiency, and access visual dashboards.
 
 ⸻
 
@@ -27,7 +27,25 @@ EZ-Garden is a complete management platform for gardens, farms, municipalities, 
 
 📸 Screenshots
 
-(Will be inserted after you upload them here.)
+🗺️ Interactive City Map
+
+![](/mnt/data/צילום מסך 2025-11-22 ב-23.34.00.jpeg)
+
+🧭 Area View + Plant Navigation
+
+![](/mnt/data/צילום מסך 2025-11-22 ב-23.34.20.png)
+
+🏙️ System Landing Page
+
+![](/mnt/data/צילום מסך 2025-11-22 ב-23.28.39.png)
+
+🔐 Registration Selection
+
+![](/mnt/data/צילום מסך 2025-11-22 ב-23.29.05.png)
+
+📊 Efficiency Tracking Dashboard
+
+![](/mnt/data/צילום מסך 2025-11-22 ב-23.28.54.jpeg)
 
 ⸻
 
@@ -48,22 +66,6 @@ EZ-Garden/
 │     ├── images/
 │
 └── __pycache__/
-
-
-⸻
-
-🔥 Firebase Setup
-	1.	Go to Firebase Console → Project Settings → Service Accounts
-	2.	Click Generate new private key
-	3.	Download the .json file
-	4.	Place it in the project root as:
-
-firebase-key.json
-
-	5.	In app.py:
-
-cred = credentials.Certificate("firebase-key.json")
-firebase_admin.initialize_app(cred)
 
 
 ⸻
