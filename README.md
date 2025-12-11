@@ -52,15 +52,17 @@ EZ‑Garden is a complete management platform for gardens, farms, municipalities
 
 📸 Screenshots
 
-🗺️ Interactive City Map
 
-![Map](photos/map.png)
 
 🏙️ System Landing Page
 
 ![Home](photos/home1.png)
 
 ![Overview](photos/home2.png)
+
+🗺️ Interactive City Map
+
+![Map](photos/map.png)
 
 🔐 Registration Selection
 
